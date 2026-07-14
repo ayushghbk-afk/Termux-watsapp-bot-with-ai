@@ -1,0 +1,19 @@
+{
+  "name": "termux-wa-ocr-bot",
+  "version": "1.0.0",
+  "description": "WhatsApp OCR, Search, and AI Assistant running locally on Android via Termux",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@hapi/boom": "^10.0.1",
+    "@whiskeysockets/baileys": "^6.6.0",
+    "cheerio": "^1.0.0-rc.12",
+    "node-tesseract-ocr": "^2.2.1",
+    "pino": "^9.0.0",
+    "qrcode-terminal": "^0.12.0"
+  },
+  "author": "",
+  "license": "MIT"
+}
