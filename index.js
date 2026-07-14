@@ -17,8 +17,8 @@ const CONFIG = {
     // 🔒 Access Control Whitelist Configuration
     // Add numbers (with country code + @s.whatsapp.net) or group IDs (@g.us) or LIDs (@lid)
     ALLOWED_USERS: [
-        "919529091811@s.whatsapp.net", // Example format
-    ],
+        "9112345678901@s.whatsapp.net", // Example format
+        //you have to add number or group id top side is example  ],
     
     // 🤖 Identity Mapping Profile
     AI_NAME: "v1 of ayush",
@@ -26,7 +26,7 @@ const CONFIG = {
     ENGINE_NAME: "v1 engine",
 
     // 🧠 Ollama Local LLM Configuration
-    OLLAMA_MODEL: 'qwen2.5:0.5b',
+    OLLAMA_MODEL: 'qwen2.5:0.5b', // you can change model 
     OLLAMA_HOST: 'http://127.0.0.1:11434',
     
     // 🛠️ OCR Engine Binary Path (Customized for Android Termux)
@@ -252,7 +252,7 @@ async function startBot() {
                 .replace(tongyiRegEx, CONFIG.ENGINE_NAME);
 
             await sock.sendMessage(from, { 
-                text: `${aiReply}\n\n⚡ _Termux Web-Smart Engine_` 
+                text: `${aiReply}\n\n⚡ _AI_` 
             });
             
             await sock.sendPresenceUpdate('paused', from);
