@@ -4,7 +4,11 @@
   "description": "WhatsApp OCR, Search, and AI Assistant running locally on Android via Termux",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "start:bg": "pm2 start index.js --name \"wa-ocr-bot\"",
+    "stop": "pm2 stop wa-ocr-bot",
+    "restart": "pm2 restart wa-ocr-bot",
+    "logs": "pm2 logs wa-ocr-bot"
   },
   "dependencies": {
     "@hapi/boom": "^10.0.1",
