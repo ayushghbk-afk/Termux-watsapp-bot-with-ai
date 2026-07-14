@@ -1,0 +1,4 @@
+node_modules/
+auth_session/
+temp_*.jpg
+.DS_Store
