@@ -4,50 +4,64 @@
 
 ![Platform](https://img.shields.io/badge/Platform-Android-green)
 ![Termux](https://img.shields.io/badge/Runs%20On-Termux-blue)
-![Node.js](https://img.shields.io/badge/Node.js-Required-brightgreen)
+![Node.js](https://img.shields.io/badge/Node.js-20+-brightgreen)
+![Ollama](https://img.shields.io/badge/AI-Ollama-blueviolet)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 ![Status](https://img.shields.io/badge/Status-Active-success)
 
 </p>
 
-A lightweight WhatsApp AI assistant that runs **100% locally on Android using Termux**.
-
-It combines:
-
-- 🤖 Local AI (Ollama)
-- 📷 OCR using Tesseract
-- 🌐 Live Web Search
-- 💬 WhatsApp Automation
-- 🔄 PM2 Background Process Manager
-
-No cloud server is required.
+<p align="center">
+An open-source WhatsApp AI assistant that runs <b>100% locally</b> on Android using <b>Termux</b>.<br>
+Powered by <b>Ollama</b>, <b>Tesseract OCR</b>, and <b>Baileys</b>.
+</p>
 
 ---
 
-# ✨ Features
+## ✨ Features
 
-- 🤖 Offline AI replies
+- 🤖 Offline AI replies using Ollama
 - 📷 OCR image text extraction
-- 🌍 Live web search support
-- 🔒 User whitelist security
+- 🌐 Live web search support
+- 💬 WhatsApp automation
 - 👥 Group chat support
-- 🔄 Auto restart using PM2
-- 📱 Runs entirely inside Termux
+- 🔒 User whitelist security
+- 🔄 Automatic restart with PM2
+- 📱 Runs completely inside Termux
 - ⚡ Optimized for low RAM devices
-- 🧠 Supports multiple Ollama AI models
+- 🧠 Supports multiple Ollama models
+
+---
+
+# 📑 Table of Contents
+
+- Features
+- Requirements
+- Installation
+- Install Ollama
+- Configuration
+- Using Different AI Models
+- First Launch
+- Running in Background
+- OCR
+- Web Search
+- Commands
+- Troubleshooting
+- Built With
+- License
 
 ---
 
 # 📂 Project Structure
 
 ```text
-Termux-watsapp-bot-with-ai/
+Termux-whatsapp-ai/
 
+├── auth_info/
+├── utils/
 ├── index.js
 ├── package.json
 ├── package-lock.json
-├── auth_info/
-├── utils/
 ├── README.md
 └── ...
 ```
@@ -58,7 +72,7 @@ Termux-watsapp-bot-with-ai/
 
 - Android 10+
 - Latest Termux (F-Droid)
-- Node.js
+- Node.js 20+
 - Git
 - Ollama
 - Tesseract OCR
@@ -71,19 +85,14 @@ Termux-watsapp-bot-with-ai/
 ## 1. Update packages
 
 ```bash
-pkg update -y
-pkg upgrade -y
+pkg update -y && pkg upgrade -y
 ```
-
----
 
 ## 2. Install dependencies
 
 ```bash
-pkg install nodejs git tesseract android-tools ollama -y
+pkg install nodejs git ollama tesseract android-tools -y
 ```
-
----
 
 ## 3. Install PM2
 
@@ -91,9 +100,7 @@ pkg install nodejs git tesseract android-tools ollama -y
 npm install -g pm2
 ```
 
----
-
-## 4. Clone repository
+## 4. Clone the repository
 
 ```bash
 git clone https://github.com/ayushghbk-afk/Termux-watsapp-bot-with-ai.git
@@ -101,9 +108,7 @@ git clone https://github.com/ayushghbk-afk/Termux-watsapp-bot-with-ai.git
 cd Termux-watsapp-bot-with-ai
 ```
 
----
-
-## 5. Install npm packages
+## 5. Install Node packages
 
 ```bash
 npm install
@@ -111,9 +116,9 @@ npm install
 
 ---
 
-# 🤖 Install & Start Ollama
+# 🤖 Install Ollama
 
-Start the Ollama server:
+Start Ollama:
 
 ```bash
 ollama serve &
@@ -127,7 +132,7 @@ ollama pull qwen2.5:0.5b
 
 ---
 
-# ⚙ Configuration
+# ⚙️ Configuration
 
 Open:
 
@@ -135,7 +140,7 @@ Open:
 nano index.js
 ```
 
-Edit the configuration:
+Edit:
 
 ```javascript
 const CONFIG = {
@@ -147,9 +152,9 @@ ALLOWED_USERS: [
 
 AI_NAME: "v1 of ayush",
 
-ORGANIZATION_NAME: "ayush development labs",
+ORGANIZATION_NAME: "Ayush Development Labs",
 
-ENGINE_NAME: "v1 engine",
+ENGINE_NAME: "v1 Engine",
 
 OLLAMA_MODEL: "qwen2.5:0.5b",
 
@@ -171,9 +176,9 @@ CTRL + X
 
 ---
 
-# 🧠 Using a Different AI Model
+# 🧠 Using Different AI Models
 
-This project works with **any Ollama model**.
+The bot supports **any model available in Ollama**.
 
 ## View installed models
 
@@ -190,28 +195,25 @@ qwen2.5:1.5b        934 MB
 gemma3:1b           815 MB
 llama3.2:3b         2.0 GB
 phi3:mini           2.3 GB
+mistral:7b          4.1 GB
 ```
 
 ---
 
-## Download a new model
+## Download another model
 
 ```bash
 ollama pull <model-name>
 ```
 
-Examples:
+Examples
 
 ```bash
-ollama pull qwen2.5:0.5b
+ollama pull gemma3:1b
 ```
 
 ```bash
 ollama pull qwen2.5:1.5b
-```
-
-```bash
-ollama pull gemma3:1b
 ```
 
 ```bash
@@ -228,7 +230,7 @@ ollama pull mistral:7b
 
 ---
 
-## Change the model
+## Switch AI Model
 
 Open:
 
@@ -242,9 +244,7 @@ Find:
 OLLAMA_MODEL: "qwen2.5:0.5b",
 ```
 
-Replace it with any installed model.
-
-Example:
+Replace with:
 
 ```javascript
 OLLAMA_MODEL: "gemma3:1b",
@@ -256,15 +256,7 @@ or
 OLLAMA_MODEL: "llama3.2:3b",
 ```
 
-Save the file:
-
-```
-CTRL + O
-ENTER
-CTRL + X
-```
-
-Restart the bot:
+Restart:
 
 ```bash
 npm run restart
@@ -272,10 +264,10 @@ npm run restart
 
 ---
 
-## Recommended Models
+## 📊 Recommended Models
 
 | Model | RAM | Speed | Quality |
-|-------|----:|:-----:|:-------:|
+|------|------|:------:|:------:|
 | qwen2.5:0.5b | 1 GB | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ |
 | qwen2.5:1.5b | 2 GB | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
 | gemma3:1b | 2 GB | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
@@ -283,28 +275,28 @@ npm run restart
 | phi3:mini | 4–6 GB | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
 | mistral:7b | 8+ GB | ⭐⭐ | ⭐⭐⭐⭐⭐ |
 
-### Tips
+### Recommendations
 
-- 📱 **Low-end devices (4–6 GB RAM):** `qwen2.5:0.5b` or `gemma3:1b`
-- ⚖️ **Balanced performance:** `qwen2.5:1.5b`
-- 🧠 **Best quality:** `llama3.2:3b` or `phi3:mini`
-- 💻 **High-end devices (8 GB+ RAM):** `mistral:7b`
+| Device | Model |
+|---------|-------|
+| 4–6 GB RAM | qwen2.5:0.5b |
+| Balanced | qwen2.5:1.5b |
+| Best Quality | llama3.2:3b |
+| High-end Phones | mistral:7b |
 
-> **Note:** Larger models require more RAM, storage, and CPU power. If a model is too large for your device, Ollama may run slowly or fail to load.
+> **Note:** Larger models require more RAM, storage, and CPU power.
 
 ---
 
-# ▶ First Launch
-
-Start the bot:
+# ▶️ First Launch
 
 ```bash
 npm start
 ```
 
-Scan the QR code using:
+Scan the QR Code using:
 
-```text
+```
 WhatsApp
 
 ↓
@@ -320,35 +312,35 @@ Linked Devices
 Link a Device
 ```
 
-After successful login:
+Once connected:
 
-```text
+```
 CTRL + C
 ```
 
 ---
 
-# 🔄 Run in Background
+# 🔄 Running in Background
 
-Start:
+Start
 
 ```bash
 npm run start:bg
 ```
 
-View logs:
+Logs
 
 ```bash
 npm run logs
 ```
 
-Restart:
+Restart
 
 ```bash
 npm run restart
 ```
 
-Stop:
+Stop
 
 ```bash
 npm run stop
@@ -356,17 +348,17 @@ npm run stop
 
 ---
 
-# 📷 OCR Example
+# 📷 OCR
 
-Send an image with a caption such as:
+Send an image with a caption:
 
-```text
+```
 Explain this image
 ```
 
 or
 
-```text
+```
 Translate this text
 ```
 
@@ -382,36 +374,36 @@ The bot will:
 
 Prefix your message with:
 
-```text
+```
 !search
 ```
 
-Example:
+Example
 
-```text
+```
 !search Latest SpaceX launch
 ```
 
 The bot will:
 
-- Search the web
-- Collect live information
-- Send results to Ollama
-- Generate an updated answer
+1. Search the web
+2. Collect relevant information
+3. Send results to Ollama
+4. Generate a summarized response
 
 ---
 
 # 🔒 Authorized Users
 
-Only users listed in:
+Only WhatsApp IDs listed inside
 
 ```javascript
 ALLOWED_USERS
 ```
 
-can interact with the AI.
+can use the AI.
 
-Unauthorized users are ignored automatically.
+Unauthorized users are automatically ignored.
 
 ---
 
@@ -421,7 +413,7 @@ Unauthorized users are ignored automatically.
 |----------|-------------|
 | `npm start` | Start the bot |
 | `npm run start:bg` | Run in background |
-| `npm run logs` | View PM2 logs |
+| `npm run logs` | View logs |
 | `npm run restart` | Restart bot |
 | `npm run stop` | Stop bot |
 
@@ -429,9 +421,7 @@ Unauthorized users are ignored automatically.
 
 # ❓ Troubleshooting
 
-## ECONNREFUSED
-
-Make sure Ollama is running:
+### Ollama connection refused
 
 ```bash
 ollama serve &
@@ -439,15 +429,15 @@ ollama serve &
 
 ---
 
-## Unauthorized User
+### Unauthorized User
 
-Add the user's WhatsApp JID to:
+Add the user's WhatsApp ID to:
 
 ```javascript
 ALLOWED_USERS
 ```
 
-Then restart:
+Restart:
 
 ```bash
 npm run restart
@@ -455,11 +445,11 @@ npm run restart
 
 ---
 
-## Termux Stops Running
+### Termux gets killed
 
 - Disable Battery Optimization
 - Enable Wake Lock
-- Disable Phantom Process Killer (if applicable)
+- Disable Phantom Process Killer
 
 ---
 
@@ -485,9 +475,9 @@ Feel free to fork, modify, and improve this project.
 
 # ⭐ Support
 
-If you found this project useful, consider giving it a **⭐ Star** on GitHub.
+If you like this project, please give it a ⭐ on GitHub.
 
-It helps others discover the project and motivates future development.
+Your support helps improve the project and motivates future development.
 
 ---
 
